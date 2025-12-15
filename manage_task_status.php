@@ -1,8 +1,4 @@
 <?php 
-/**
- * Форма для изменения статуса задачи (упрощенная версия для сотрудников)
- * Позволяет сотрудникам изменять только статус своих задач
- */
 include 'db_connect.php';
 if(isset($_GET['id'])){
 	$qry = $conn->query("SELECT * FROM task_list where id = ".$_GET['id'])->fetch_array();

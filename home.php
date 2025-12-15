@@ -1,7 +1,6 @@
 <?php include('db_connect.php') ?>
 <?php
 ?>
-<!-- Info boxes -->
  <div class="col-12">
           <div class="card">
             <div class="card-body">

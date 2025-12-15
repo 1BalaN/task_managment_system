@@ -2,40 +2,28 @@
 session_start();
 ini_set('display_errors', 1);
 
-/**
- * Класс Action - основной класс для обработки бизнес-логики приложения
- * Содержит методы для работы с пользователями, проектами, задачами и прогрессом
- */
+
 Class Action {
 	private $db; // Соединение с базой данных
 
 	/**
-	 * Конструктор класса
 	 * Инициализирует подключение к базе данных
 	 */
 	public function __construct() {
-		ob_start(); // Включаем буферизацию вывода
-   	include 'db_connect.php'; // Подключаем файл с настройками БД
+		ob_start();
+   	include 'db_connect.php';
     
     $this->db = $conn; // Сохраняем соединение в свойство класса
 	}
 	
 	/**
-	 * Деструктор класса
 	 * Закрывает соединение с БД и завершает буферизацию
 	 */
 	function __destruct() {
-	    $this->db->close(); // Закрываем соединение
-	    ob_end_flush(); // Завершаем буферизацию и выводим данные
+	    $this->db->close();
+	    ob_end_flush();
 	}
 
-	/**
-	 * Авторизация пользователя в системе
-	 * Проверяет email и пароль, создает сессию при успешной авторизации
-	 * Поддерживает как новые пароли (password_hash), так и старые (MD5) для обратной совместимости
-	 * При успешной авторизации со старым MD5-паролем автоматически перехеширует его на password_hash
-	 * @return int 1 - успешная авторизация, 2 - неверные данные
-	 */
 	function login(){
 		extract($_POST); // Извлекаем переменные из POST-запроса
 		
@@ -46,24 +34,19 @@ Class Action {
 			$stored_password = $user['password'];
 			$password_valid = false;
 			
-			// Проверяем пароль: сначала пытаемся проверить через password_verify (новый формат)
 			if(password_verify($password, $stored_password)){
 				$password_valid = true;
 			}
-			// Если не подошел, проверяем через MD5 (старый формат для обратной совместимости)
 			elseif(md5($password) === $stored_password){
 				$password_valid = true;
-				// Автоматическая миграция: перехешируем старый MD5-пароль на password_hash
 				$new_hash = password_hash($password, PASSWORD_DEFAULT);
 				$this->db->query("UPDATE users SET password = '".$this->db->real_escape_string($new_hash)."' WHERE id = ".$user['id']);
 			}
 			
 			if($password_valid){
-				// Если пользователь найден и пароль верный, сохраняем его данные в сессию
 				foreach ($user as $key => $value) {
-					// Пропускаем пароль и числовые ключи
 					if($key != 'password' && !is_numeric($key))
-						$_SESSION['login_'.$key] = $value; // Сохраняем в сессию с префиксом 'login_'
+						$_SESSION['login_'.$key] = $value;
 				}
 				return 1; // Успешная авторизация
 			}
@@ -71,10 +54,6 @@ Class Action {
 		return 2; // Пользователь не найден или неверный пароль
 	}
 	
-	/**
-	 * Выход пользователя из системы
-	 * Уничтожает сессию и перенаправляет на страницу входа
-	 */
 	function logout(){
 		session_destroy(); // Уничтожаем сессию
 		// Очищаем все переменные сессии
