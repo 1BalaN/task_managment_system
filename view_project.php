@@ -260,7 +260,6 @@ $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
 	                        	
 
 		                      </div>
-		                      <!-- /.user-block -->
 		                      <div>
 		                       <?php echo html_entity_decode($row['comment']) ?>
 		                      </div>
@@ -307,7 +306,6 @@ $manager = $manager->num_rows > 0 ? $manager->fetch_array() : array();
 	})
 	$('#new_productivity').click(function(){
 		<?php if(isset($_SESSION['login_type']) && $_SESSION['login_type'] == 3): ?>
-		// Для сотрудников показываем только свои задачи
 		uni_modal("<i class='fa fa-plus'></i> Новый прогресс (только для ваших задач)","manage_progress.php?pid=<?php echo $id ?>",'large')
 		<?php else: ?>
 		uni_modal("<i class='fa fa-plus'></i> Новый прогресс","manage_progress.php?pid=<?php echo $id ?>",'large')

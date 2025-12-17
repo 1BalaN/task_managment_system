@@ -1,14 +1,12 @@
 <?php 
 include 'db_connect.php';
 
-// Проверка прав: сотрудники не могут редактировать задачи через эту форму
 if(isset($_SESSION['login_type']) && $_SESSION['login_type'] == 3 && isset($_GET['id'])){
 	$task_check = $conn->query("SELECT assignee_id FROM task_list WHERE id = ".$_GET['id'])->fetch_assoc();
 	if(empty($task_check) || $task_check['assignee_id'] != $_SESSION['login_id']){
 		echo '<div class="alert alert-danger">У вас нет прав на редактирование этой задачи. Используйте форму изменения статуса.</div>';
 		exit;
 	}
-	// Если это их задача, перенаправляем на упрощенную форму
 	echo '<script>location.href="manage_task_status.php?id='.$_GET['id'].'"</script>';
 	exit;
 }

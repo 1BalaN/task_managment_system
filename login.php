@@ -3,16 +3,13 @@
 <?php 
 session_start();
 include('./db_connect.php');
-  ob_start(); // Включаем буферизацию вывода
-  // Загружаем настройки системы в сессию (всегда, без проверки)
-  // Ранее была проверка if(!isset($_SESSION['system'])), но она закомментирована
-  // для обеспечения актуальности настроек при каждом входе
+  ob_start();
 
-    $system = $conn->query("SELECT * FROM system_settings")->fetch_array(); // Получаем настройки из БД
+    $system = $conn->query("SELECT * FROM system_settings")->fetch_array(); 
     foreach($system as $k => $v){
-      $_SESSION['system'][$k] = $v; // Сохраняем каждую настройку в сессию
+      $_SESSION['system'][$k] = $v; 
     }
-  ob_end_flush(); // Завершаем буферизацию
+  ob_end_flush();
 ?>
 <?php 
 if(isset($_SESSION['login_id']))
@@ -25,7 +22,6 @@ header("location:index.php?page=home");
   <div class="login-logo">
     <a href="#" class="text-white"><b><?php echo $_SESSION['system']['name'] ?></b></a>
   </div>
-  <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <form action="" id="login-form">
@@ -54,18 +50,14 @@ header("location:index.php?page=home");
               </label>
             </div>
           </div>
-          <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Войти</button>
           </div>
-          <!-- /.col -->
         </div>
       </form>
     </div>
-    <!-- /.login-card-body -->
   </div>
 </div>
-<!-- /.login-box -->
 <script>
   $(document).ready(function(){
     $('#login-form').submit(function(e){

@@ -1,21 +1,12 @@
-<!-- SweetAlert2 -->
 <script src="assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-<!-- Toastr -->
 <script src="assets/plugins/toastr/toastr.min.js"></script>
-<!-- Switch Toggle -->
 <script src="assets/plugins/bootstrap4-toggle/js/bootstrap4-toggle.min.js"></script>
-<!-- Select2 -->
 <script src="assets/plugins/select2/js/select2.full.min.js"></script>
-<!-- Summernote -->
 <script src="assets/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- dropzonejs -->
 <script src="assets/plugins/dropzone/min/dropzone.min.js"></script>
 <script src="assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-<!-- DateTimePicker -->
-  <script src="assets/dist/js/jquery.datetimepicker.full.min.js"></script>
-  <!-- Bootstrap Switch -->
+<script src="assets/dist/js/jquery.datetimepicker.full.min.js"></script>
 <script src="assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
- <!-- MOMENT -->
 <script src="assets/plugins/moment/moment.min.js"></script>
 <script>
 	$(document).ready(function(){
@@ -130,25 +121,20 @@ $('.number').on('input keyup keypress',function(){
     })
 </script>
 <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- overlayScrollbars -->
+
 <script src="assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
+
 <script src="assets/dist/js/adminlte.js"></script>
 
-<!-- PAGE assets/plugins -->
-<!-- jQuery Mapael -->
 <script src="assets/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
 <script src="assets/plugins/raphael/raphael.min.js"></script>
 <script src="assets/plugins/jquery-mapael/jquery.mapael.min.js"></script>
 <script src="assets/plugins/jquery-mapael/maps/usa_states.min.js"></script>
-<!-- ChartJS -->
 <script src="assets/plugins/chart.js/Chart.min.js"></script>
 
-<!-- AdminLTE for demo purposes -->
+
 <script src="assets/dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="assets/dist/js/pages/dashboard2.js"></script>
-<!-- DataTables  & Plugins -->
 <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>

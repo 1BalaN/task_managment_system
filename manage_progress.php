@@ -6,7 +6,6 @@ if(isset($_GET['id'])){
 		$$k = $v;
 	}
 	
-	// Проверка прав для сотрудников: могут редактировать только свои записи
 	if(isset($_SESSION['login_type']) && $_SESSION['login_type'] == 3){
 		if(empty($user_id) || $user_id != $_SESSION['login_id']){
 			echo '<div class="alert alert-danger">У вас нет прав на редактирование этой записи о прогрессе.</div>';
@@ -15,7 +14,6 @@ if(isset($_GET['id'])){
 	}
 }
 
-// Проверка прав при передаче task_id через GET
 if(isset($_GET['tid']) && isset($_SESSION['login_type']) && $_SESSION['login_type'] == 3){
 	$task_check = $conn->query("SELECT assignee_id FROM task_list WHERE id = ".$_GET['tid'])->fetch_assoc();
 	if(empty($task_check) || $task_check['assignee_id'] != $_SESSION['login_id']){
@@ -37,7 +35,6 @@ if(isset($_GET['tid']) && isset($_SESSION['login_type']) && $_SESSION['login_typ
 		              <select class="form-control form-control-sm select2" name="task_id" required>
 		              	<option></option>
 		              	<?php 
-		              	// Для сотрудников показываем только свои задачи
 		              	$task_query = "SELECT * FROM task_list where project_id = {$_GET['pid']}";
 		              	if(isset($_SESSION['login_type']) && $_SESSION['login_type'] == 3){
 		              		$task_query .= " AND assignee_id = {$_SESSION['login_id']}";

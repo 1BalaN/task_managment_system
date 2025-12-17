@@ -1,6 +1,4 @@
-<!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-primary navbar-dark ">
-    <!-- Left navbar links -->
+<nav class="main-header navbar navbar-expand navbar-primary navbar-dark ">
     <ul class="navbar-nav">
       <?php if(isset($_SESSION['login_id'])): ?>
       <li class="nav-item">
@@ -30,7 +28,6 @@
       </li>
     </ul>
   </nav>
-  <!-- /.navbar -->
   <script>
      $('#manage_account').click(function(){
         uni_modal('Manage Account','manage_user.php?id=<?php echo $_SESSION['login_id'] ?>')

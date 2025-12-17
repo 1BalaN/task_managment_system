@@ -10,7 +10,7 @@ $crud = new Action();
 if($action == 'login'){
 	$login = $crud->login();
 	if($login)
-		echo $login; // Возвращаем результат: 1 - успех, 2 - ошибка
+		echo $login;
 }
 
 if($action == 'logout'){
@@ -22,7 +22,7 @@ if($action == 'logout'){
 if($action == 'save_user'){
 	$save = $crud->save_user();
 	if($save)
-		echo $save; // Возвращаем результат: 1 - успех, 2 - email уже существует
+		echo $save;
 }
 
 if($action == 'update_user'){
@@ -40,7 +40,7 @@ if($action == 'delete_user'){
 if($action == 'save_project'){
 	$save = $crud->save_project();
 	if($save)
-		echo $save; // Возвращаем 1 при успешном сохранении
+		echo $save;
 }
 
 if($action == 'delete_project'){
@@ -52,7 +52,7 @@ if($action == 'delete_project'){
 if($action == 'save_task'){
 	$save = $crud->save_task();
 	if($save)
-		echo $save; // Возвращаем результат: 1 - успех, 3 - недостаточно прав (для сотрудников)
+		echo $save;
 }
 
 if($action == 'delete_task'){
@@ -64,7 +64,7 @@ if($action == 'delete_task'){
 if($action == 'save_progress'){
 	$save = $crud->save_progress();
 	if($save)
-		echo $save; // Возвращаем результат: 1 - успех, 3 - недостаточно прав (задача не назначена на сотрудника)
+		echo $save;
 }
 
 if($action == 'delete_progress'){
@@ -76,7 +76,7 @@ if($action == 'delete_progress'){
 if($action == 'project_events'){
 	$events = $crud->project_events();
 	if($events)
-		echo $events; // Возвращаем JSON-строку с событиями
+		echo $events;
 }
 ob_end_flush();
 ?>

@@ -6,7 +6,6 @@ if(isset($_GET['id'])){
 		$$k = $v;
 	}
 	
-	// Проверка прав: сотрудники могут изменять только свои задачи
 	if(isset($_SESSION['login_type']) && $_SESSION['login_type'] == 3){
 		if(empty($assignee_id) || $assignee_id != $_SESSION['login_id']){
 			echo '<div class="alert alert-danger">У вас нет прав на изменение этой задачи.</div>';
